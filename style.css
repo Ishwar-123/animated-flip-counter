@@ -1,0 +1,194 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+.container {
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    z-index: 1;
+    /* Ensure the container is above the video */
+}
+
+.container_items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.7);
+    /* Slightly more opaque for better visibility */
+    padding: 20px;
+    border-radius: 16px;
+}
+
+.segment-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 10px;
+}
+
+.flip-card {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    margin: 0 2px;
+}
+
+.top,
+.bottom,
+.flip-card .top-flip,
+.flip-card .bottom-flip {
+    height: .75em;
+    line-height: 1;
+    padding: .25em;
+    overflow: hidden;
+    font-size: 52px;
+}
+
+.top,
+.flip-card .top-flip {
+    background: rgba(255, 255, 255, 0.95);
+    color: black;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bottom,
+.flip-card .bottom-flip {
+    background-color: white;
+    display: flex;
+    color: black;
+    align-items: flex-end;
+    border-bottom-right-radius: .1em;
+    border-bottom-left-radius: .1em;
+}
+
+.flip-card .top-flip {
+    position: absolute;
+    width: 100%;
+    animation: flip-top 250ms ease-in;
+    transform-origin: bottom;
+}
+
+.flip-card .bottom-flip {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    animation: flip-bottom 250ms ease-out 250ms;
+    transform-origin: top;
+    transform: rotateX(90deg);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes flip-top {
+    100% {
+        transform: rotate(90deg, 0deg);
+    }
+}
+
+
+
+@keyframes flip-bottom {
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        gap: 1em;
+    }
+
+    .top,
+    .bottom,
+    .flip-card .top-flip,
+    .flip-card .bottom-flip {
+        font-size: 2.5rem;
+    }
+}
+
+.input-container {
+    text-align: center;
+    margin-bottom: 50px;
+    width: 39%;
+    gap: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1;
+}
+
+input {
+    width: 20%;
+    height: 80px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+}
+
+::placeholder {
+    text-align: center;
+    font-size: 20px;
+}
+
+#startButton {
+    width: 38%;
+    height: 70px;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+#startButton:hover {
+    background-color: #45a049;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
